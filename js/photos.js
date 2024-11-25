@@ -1,6 +1,6 @@
-import { getRandomInRange } from './util';
-import { createComments } from './comments';
-import { createPhoto } from './photo';
+import { getRandomInRange } from './util.js';
+import { createComments } from './comments.js';
+import { createPhoto } from './photo.js';
 
 const PHOTOS_QUANTITY = 25;
 const LIKES_QUANTITY_MIN = 15;

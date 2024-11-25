@@ -1,4 +1,4 @@
-import { createPhotos } from './photos';
+import { createPhotos } from './photos.js';
 
 /* eslint-disable no-alert, no-console */
 console.log(createPhotos());
