@@ -3,12 +3,12 @@ import { createComment } from './comment';
 
 const COMMENTS_PER_PHOTO_QUANTITY_MIN = 0;
 const COMMENTS_PER_PHOTO_QUANTITY_MAX = 30;
-const MESSAGES_PER_COMMENT_QUANTITY_MIN = 1;
-const MESSAGES_PER_COMMENT_QUANTITY_MAX = 2;
+const SENTENCES_PER_MESSAGE_QUANTITY_MIN = 1;
+const SENTENCES_PER_MESSAGE_QUANTITY_MAX = 2;
 const AVATAR_ID_MIN = 1;
 const AVATAR_ID_MAX = 6;
 
-const COMMENT_MESSAGES = [
+const SENTENCES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -51,30 +51,30 @@ const USERNAMES = [
   'Габриэль',
 ];
 
-const getRandomMessage = (length) => {
-  const uniqueMessage = [];
+const getRandomSentence = (length) => {
+  const uniqueSentence = [];
   return (() => {
-    let newMessage = getRandomArrayElement(COMMENT_MESSAGES);
-    while (uniqueMessage.length < length) {
-      if (uniqueMessage.includes(newMessage)) {
-        newMessage = getRandomArrayElement(COMMENT_MESSAGES);
+    let newSentence = getRandomArrayElement(SENTENCES);
+    while (uniqueSentence.length < length) {
+      if (uniqueSentence.includes(newSentence)) {
+        newSentence = getRandomArrayElement(SENTENCES);
       } else {
-        uniqueMessage.push(newMessage);
+        uniqueSentence.push(newSentence);
       }
     }
-    return uniqueMessage.join(' ');
+    return uniqueSentence.join(' ');
   })();
 };
 
-const createMessageSequence = () => {
-  const messagesLength = getRandomInRange(MESSAGES_PER_COMMENT_QUANTITY_MIN, MESSAGES_PER_COMMENT_QUANTITY_MAX);
-  return getRandomMessage(messagesLength);
+const createSentencesSequence = () => {
+  const messagesLength = getRandomInRange(SENTENCES_PER_MESSAGE_QUANTITY_MIN, SENTENCES_PER_MESSAGE_QUANTITY_MAX);
+  return getRandomSentence(messagesLength);
 };
 
 const createComments = (generatorIdFn) => {
   const getId = () => generatorIdFn();
   const getAvatar = () => `img/avatar-${getRandomInRange(AVATAR_ID_MIN, AVATAR_ID_MAX)}.svg`;
-  const getMessage = () => createMessageSequence();
+  const getMessage = () => createSentencesSequence();
   const getName = () => getRandomArrayElement(USERNAMES);
 
   const length = getRandomInRange(COMMENTS_PER_PHOTO_QUANTITY_MIN, COMMENTS_PER_PHOTO_QUANTITY_MAX);
