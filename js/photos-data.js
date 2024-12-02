@@ -1,5 +1,5 @@
 import { getRandomInRange } from './util.js';
-import { createComments } from './comments.js';
+import { getCommentsData } from './comments-data.js';
 import { createPhoto } from './photo.js';
 
 const PHOTOS_QUANTITY = 25;
@@ -58,13 +58,13 @@ const createIdGenerator = () => {
   return () => ++currentId;
 };
 
-const createPhotos = () => {
+const getPhotosData = () => {
   const getId = createRandomIdGenerator(PHOTOS_QUANTITY);
   const getUrl = (id) => `photos/${id}.jpg`;
   const getDescription = (id) => PHOTOS_DESCRIPTIONS[id - 1];
   const getLikes = () => getRandomInRange(LIKES_QUANTITY_MIN, LIKES_QUANTITY_MAX);
   const getCommentId = createIdGenerator();
-  const getComments = () => createComments(getCommentId);
+  const getComments = () => getCommentsData(getCommentId);
 
   const length = PHOTOS_QUANTITY;
   const actions = {getId, getUrl, getDescription, getLikes, getComments};
@@ -72,4 +72,4 @@ const createPhotos = () => {
   return Array.from({length}, () => createPhoto(actions));
 };
 
-export {createPhotos};
+export {getPhotosData};

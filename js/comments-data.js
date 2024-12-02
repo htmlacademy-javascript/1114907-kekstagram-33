@@ -71,7 +71,7 @@ const createSentencesSequence = () => {
   return getRandomSentence(messagesLength);
 };
 
-const createComments = (generatorIdFn) => {
+const getCommentsData = (generatorIdFn) => {
   const getId = () => generatorIdFn();
   const getAvatar = () => `img/avatar-${getRandomInRange(AVATAR_ID_MIN, AVATAR_ID_MAX)}.svg`;
   const getMessage = () => createSentencesSequence();
@@ -83,4 +83,4 @@ const createComments = (generatorIdFn) => {
   return Array.from({length}, () => createComment(actions));
 };
 
-export {createComments};
+export {getCommentsData};
