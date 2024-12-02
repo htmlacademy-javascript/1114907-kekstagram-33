@@ -1,5 +1,6 @@
-import { createPhotos } from './photos.js';
+import { getMockData } from './data.js';
+import { getThumbnails, renderThumbnails } from './thumbnails.js';
 
-/* eslint-disable no-alert, no-console */
-console.log(createPhotos());
-/* eslint-enable no-alert */
+const thumbnailHTMLCollection = getThumbnails(getMockData());
+
+renderThumbnails(thumbnailHTMLCollection);
