@@ -1,8 +1,6 @@
-const createThumbnail = (thumbnailTemplate, thumbnailData) => {
-  const {url, description, likes, comments} = thumbnailData;
-
-  const template = thumbnailTemplate.content.cloneNode(true);
-  const thumbnailLinkEl = template.querySelector('.picture');
+const createThumbnail = (thumbnailTemplate, {url, description, likes, comments}) => {
+  const template = thumbnailTemplate.content.querySelector('.picture');
+  const thumbnailLinkEl = template.cloneNode(true);
 
   const imageEl = thumbnailLinkEl.querySelector('.picture__img');
   const commentsEl = thumbnailLinkEl.querySelector('.picture__comments');
