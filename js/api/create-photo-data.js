@@ -1,4 +1,4 @@
-const createPhoto = (actions) => {
+const createPhotoData = (actions) => {
   const {getId, getUrl, getDescription, getLikes, getComments} = actions;
 
   const id = getId();
@@ -10,4 +10,4 @@ const createPhoto = (actions) => {
   return {id, url, description, likes, comments};
 };
 
-export {createPhoto};
+export {createPhotoData};

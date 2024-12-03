@@ -1,5 +1,5 @@
-import { getRandomArrayElement, getRandomInRange } from './util.js';
-import { createComment } from './comment.js';
+import { getRandomArrayElement, getRandomInRange } from '../util';
+import { createCommentData } from './create-comment-data.js';
 
 const COMMENTS_PER_PHOTO_QUANTITY_MIN = 0;
 const COMMENTS_PER_PHOTO_QUANTITY_MAX = 30;
@@ -80,7 +80,7 @@ const getCommentsData = (generatorIdFn) => {
   const length = getRandomInRange(COMMENTS_PER_PHOTO_QUANTITY_MIN, COMMENTS_PER_PHOTO_QUANTITY_MAX);
   const actions = {getId, getAvatar, getMessage, getName};
 
-  return Array.from({length}, () => createComment(actions));
+  return Array.from({length}, () => createCommentData(actions));
 };
 
 export {getCommentsData};

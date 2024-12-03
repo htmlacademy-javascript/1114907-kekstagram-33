@@ -1,5 +1,5 @@
-import { getMockData } from './data.js';
-import { getThumbnails, renderThumbnails } from './thumbnails.js';
+import { getMockData } from './api';
+import { getThumbnails, renderThumbnails } from './thumbnails';
 
 const thumbnailHTMLCollection = getThumbnails(getMockData());
 
