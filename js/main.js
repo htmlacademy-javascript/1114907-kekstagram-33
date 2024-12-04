@@ -1,7 +1,24 @@
 import { getMockData } from './api';
+import { findPostData, openPostModal } from './modal';
 import { getThumbnails, renderThumbnails } from './thumbnails';
 
 const picturesContainer = document.querySelector('.pictures');
-const thumbnailHTMLCollection = getThumbnails(getMockData());
+const data = getMockData();
+
+const thumbnailHTMLCollection = getThumbnails(data);
+
+const thumbnailsClickHandler = (e) => {
+  if (!e.target.closest('.picture')) {
+    return;
+  }
+
+  const currentPost = e.target.closest('.picture');
+  const currentId = currentPost.dataset.id;
+  const currentPostData = findPostData(data, currentId);
+
+  openPostModal(currentPostData);
+};
+
+picturesContainer.addEventListener('click', thumbnailsClickHandler);
 
 renderThumbnails(picturesContainer, thumbnailHTMLCollection);

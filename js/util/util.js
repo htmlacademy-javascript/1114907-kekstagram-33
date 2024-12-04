@@ -28,4 +28,6 @@ const createIdGenerator = () => {
 
 const toOuterHTML = (items) => items.reduce((html, item) => (html += item.outerHTML), '');
 
-export {getRandomInRange, getRandomArrayElement, createRandomIdGenerator, createIdGenerator, toOuterHTML};
+const isEscKeyDown = (e) => e.key === 'Escape';
+
+export {getRandomInRange, getRandomArrayElement, createRandomIdGenerator, createIdGenerator, toOuterHTML, isEscKeyDown};
