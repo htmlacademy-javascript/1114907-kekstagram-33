@@ -1,12 +1,12 @@
-const createComment = (actions) => {
+const createCommentData = (actions) => {
   const {getId, getAvatar, getMessage, getName} = actions;
 
   const id = getId();
-  const avatar = getAvatar();
+  const avatarUrl = getAvatar();
   const message = getMessage();
   const name = getName();
 
-  return {id, avatar, message, name};
+  return {id, avatarUrl, message, name};
 };
 
-export {createComment};
+export {createCommentData};
