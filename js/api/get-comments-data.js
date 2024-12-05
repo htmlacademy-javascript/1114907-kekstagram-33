@@ -1,4 +1,4 @@
-import { getRandomArrayElement, getRandomInRange } from '../util';
+import { getRandomArrayElement, getRandomInRange } from '../util/index.js';
 import { createCommentData } from './create-comment-data.js';
 
 const COMMENTS_PER_PHOTO_QUANTITY_MIN = 0;

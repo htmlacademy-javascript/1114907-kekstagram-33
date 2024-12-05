@@ -1,4 +1,4 @@
-import { createIdGenerator, createRandomIdGenerator, getRandomInRange } from '../util';
+import { createIdGenerator, createRandomIdGenerator, getRandomInRange } from '../util/index.js';
 import { createPhotoData } from './create-photo-data.js';
 
 const PhotoParams = {
