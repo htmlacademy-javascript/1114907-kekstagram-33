@@ -1,6 +1,6 @@
-import { getMockData } from './api';
-import { findPostData, openPostModal } from './modal';
-import { getThumbnails, renderThumbnails } from './thumbnails';
+import { getMockData } from './api/index.js';
+import { findPostData, openPostModal } from './modal.js';
+import { getThumbnails, renderThumbnails } from './thumbnails/index.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const data = getMockData();
