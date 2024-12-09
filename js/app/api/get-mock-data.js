@@ -3,4 +3,4 @@ import { getPhotosData } from './get-photos-data.js';
 
 const getMockData = () => getPhotosData(getCommentsData);
 
-export {getMockData};
+export { getMockData };

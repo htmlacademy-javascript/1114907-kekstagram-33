@@ -1,4 +1,4 @@
-const createPhotoData = (actions) => {
+export const createPhotoData = (actions) => {
   const {getId, getUrl, getDescription, getLikes, getComments} = actions;
 
   const id = getId();
@@ -9,5 +9,3 @@ const createPhotoData = (actions) => {
 
   return {id, url, description, likes, comments};
 };
-
-export {createPhotoData};

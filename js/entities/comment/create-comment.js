@@ -1,4 +1,4 @@
-const renderComment = ({avatarUrl, userName, message}) => (`
+const createComment = ({avatarUrl, userName, message}) => (`
   <li class="social__comment">
     <img
       class="social__picture"
@@ -9,4 +9,4 @@ const renderComment = ({avatarUrl, userName, message}) => (`
   </li>
 `);
 
-export { renderComment };
+export { createComment };
