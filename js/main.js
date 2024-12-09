@@ -1,11 +1,13 @@
-import { getMockData } from './api/index.js';
-import { findPostData, openPostModal } from './modal.js';
-import { getThumbnails, renderThumbnails } from './thumbnails/index.js';
+import { App } from './app';
+import { getData } from './app/api';
+import { renderListThumbnails } from './entities/thumbnail';
+import { findPostData } from './features/post-modal';
+import { postModal } from './widgets/post-modal';
+import { initImageUploadForm } from './widgets/image-upload-form';
 
-const picturesContainer = document.querySelector('.pictures');
-const data = getMockData();
+const { picturesContainerElement } = App.elements;
 
-const thumbnailHTMLCollection = getThumbnails(data);
+const data = getData();
 
 const thumbnailsClickHandler = (e) => {
   if (!e.target.closest('.picture')) {
@@ -16,9 +18,10 @@ const thumbnailsClickHandler = (e) => {
   const currentId = currentPost.dataset.id;
   const currentPostData = findPostData(data, currentId);
 
-  openPostModal(currentPostData);
+  postModal(currentPostData).open();
 };
 
-picturesContainer.addEventListener('click', thumbnailsClickHandler);
+picturesContainerElement.addEventListener('click', thumbnailsClickHandler);
 
-renderThumbnails(picturesContainer, thumbnailHTMLCollection);
+renderListThumbnails(picturesContainerElement, data);
+initImageUploadForm();
