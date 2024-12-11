@@ -5,11 +5,11 @@ const HASHTAG_REGEX = /^#[A-Za-zА-ЯЁа-яё0-9]{1,19}$/i;
 const HASHTAG_COUNTER = 5;
 
 const {
-  imageUploadFormElement,
+  uploadFormElement,
   textHashtagsFieldElement,
 } = App.elements;
 
-const pristine = new Pristine(imageUploadFormElement, {
+const pristine = new Pristine(uploadFormElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper--error',

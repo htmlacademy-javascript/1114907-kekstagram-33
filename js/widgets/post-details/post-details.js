@@ -6,9 +6,9 @@ import { createModal } from '../../shared/util';
 const SHOWN_COMMENTS_STEP = 5;
 
 const {
-  postModalElement,
-  postModalCloseButtonElement,
-  postModalImageElement,
+  postDetailsElement,
+  postDetailsCloseButtonElement,
+  postDetailsImageElement,
   likesCountElement,
   captionElement,
   commentShownCountElement,
@@ -29,8 +29,8 @@ const removeLoadHandlerInGlobal = () => {
 const renderPost = ({url, description, likes, comments}) => {
   const currentShownComments = initCommentsLoader(commentsLoaderElement, comments, SHOWN_COMMENTS_STEP, saveLoadHandlerToGlogal);
 
-  postModalImageElement.src = url;
-  postModalImageElement.alt = description;
+  postDetailsImageElement.src = url;
+  postDetailsImageElement.alt = description;
   likesCountElement.textContent = likes;
   captionElement.textContent = description;
   commentShownCountElement.textContent = currentShownComments;
@@ -39,9 +39,9 @@ const renderPost = ({url, description, likes, comments}) => {
   commentsElement.insertAdjacentHTML('beforeend', renderListComments(comments, currentShownComments));
 };
 
-const postModal = (pictureData) => createModal(
-  postModalElement,
-  postModalCloseButtonElement,
+const postDetails = (pictureData) => createModal(
+  postDetailsElement,
+  postDetailsCloseButtonElement,
   {
     data: pictureData,
     renderFn: renderPost,
@@ -49,4 +49,4 @@ const postModal = (pictureData) => createModal(
   },
 );
 
-export { postModal };
+export { postDetails };

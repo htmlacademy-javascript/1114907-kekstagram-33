@@ -1,9 +1,9 @@
 import { App } from './app';
 import { getData } from './app/api';
 import { renderListThumbnails } from './entities/thumbnail';
-import { findPostData } from './features/post-modal';
-import { postModal } from './widgets/post-modal';
-import { initImageUploadForm } from './widgets/image-upload-form';
+import { findPostData } from './features/post-details';
+import { postDetails } from './widgets/post-details';
+import { initUploadForm } from './widgets/upload-form';
 
 const { picturesContainerElement } = App.elements;
 
@@ -18,10 +18,10 @@ const thumbnailsClickHandler = (e) => {
   const currentId = currentPost.dataset.id;
   const currentPostData = findPostData(data, currentId);
 
-  postModal(currentPostData).open();
+  postDetails(currentPostData).open();
 };
 
 picturesContainerElement.addEventListener('click', thumbnailsClickHandler);
 
 renderListThumbnails(picturesContainerElement, data);
-initImageUploadForm();
+initUploadForm();
