@@ -1,12 +1,13 @@
 import { App } from '../../app';
-import { isValidated, resetValidation } from '../../features/image-upload-form';
+import { isValidated, resetValidation } from '../../features/upload-form';
+import { initPreviewScale, destroyPreviewScale, initEffectSlider, destroyEffectSlider } from '../../features/upload-preview';
 import { isEscKeyDown, createModal } from '../../shared/util';
 
 const {
-  imageUploadFormElement,
-  imageUploadOverlayElement,
+  uploadFormElement,
+  uploadOverlayElement,
   formCloseButtonElement,
-  imageUploadFieldElement,
+  uploadFieldElement,
   textHashtagsFieldElement,
   textDescriptionFieldElement,
 } = App.elements;
@@ -14,31 +15,35 @@ const {
 const isFieldFocused = () => document.activeElement === textHashtagsFieldElement || document.activeElement === textDescriptionFieldElement;
 
 const clearUploadField = () => {
-  imageUploadFieldElement.value = '';
+  destroyPreviewScale();
+  destroyEffectSlider();
+  uploadFieldElement.value = '';
   resetValidation();
-  imageUploadFormElement.reset();
+  uploadFormElement.reset();
 };
 
 const formModal = createModal(
-  imageUploadOverlayElement,
+  uploadOverlayElement,
   formCloseButtonElement,
   {
     beforeCloseCallback: clearUploadField
   }
 );
 
-export const initImageUploadForm = () => {
+export const initUploadForm = () => {
   document.addEventListener('keydown', (e) => {
     if (isEscKeyDown(e) && isFieldFocused()) {
       e.stopPropagation();
     }
   });
 
-  imageUploadFieldElement.addEventListener('change', () => {
+  uploadFieldElement.addEventListener('change', () => {
     formModal.open();
+    initPreviewScale();
+    initEffectSlider();
   });
 
-  imageUploadFormElement.addEventListener('submit', (e) => {
+  uploadFormElement.addEventListener('submit', (e) => {
     if (!isValidated()) {
       e.preventDefault();
     }
